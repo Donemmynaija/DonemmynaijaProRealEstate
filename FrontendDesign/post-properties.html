@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" /> 
+    <title>Donemmynaija Properties</title> <!--end of title-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+</head> <!--end of head-->
+<body>
+
+
+<div class="dashboard-container">
+        
+        <div class="sidebar active" id="sidebar">
+            <div class="logo-area">
+               <a href="index.html"> <span class="logo-text">DonemmynaijaPro</span></a>
+                <i class="fas fa-times close-icon" id="close-sidebar"></i>
+            </div>
+            
+            <a href="#" class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="#" class="nav-item"><i class="fas fa-home"></i> My Listings</a>
+            <a href="#" class="nav-item"><i class="fas fa-tools"></i> New Projects</a>
+            <a href="#" class="nav-item"><i class="fas fa-tachometer-alt"></i> Performance</a>
+            <a href="#" class="nav-item"><i class="fas fa-credit-card"></i> Subscription</a>
+            <a href="#" class="nav-item"><i class="fas fa-user-circle"></i> Profile</a>
+            <a href="#" class="nav-item"><i class="fas fa-envelope"></i> My Messages</a>
+            <a href="#" class="nav-item"><i class="fas fa-heart"></i> Favourites</a>
+            
+            <a href="#" class="nav-item sign-out"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
+        </div>
+
+        <div class="main-content">
+            
+            <div class="header-bar">
+                <i class="fas fa-bars menu-icon" id="open-sidebar"></i>
+                <div class="top-icons">
+                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-question-circle"></i>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+            </div>
+
+            <div class="alert-bar">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Your subscription plan has expired. Your properties are no longer visible.</span>
+                <button class="renew-btn">Renew Subscription</button>
+                <i class="fas fa-times close-alert"></i>
+            </div>
+
+            <div class="dashboard-header">
+                <h2>Good day, Donemmy naija Digital Broadcast</h2>
+                <div class="header-actions">
+                    <button class="action-btn post-property">Post a Property</button>
+                    <button class="action-btn explore-3d">Explore 3D Tours For Your Properties</button>
+                </div>
+            </div>
+
+            <div class="widgets-row">
+                
+                <div class="widget leads-widget">
+                    <div class="widget-header">
+                        <h2>Dec Leads</h2><span class="more-icon"><i class="fas fa-ellipsis-v"></i></span>
+                    </div>
+                    <div class="metric-number">0</div>
+                    <div class="contact-buttons">
+                        <button class="btn-contact btn-phone"><i class="fas fa-phone"></i> Phone: 0</button>
+                        <button class="btn-contact btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp: 0</button>
+                        <button class="btn-contact btn-messages"><i class="fas fa-envelope"></i> Messages: 0</button>
+                    </div>
+                </div>
+
+                <div class="widget subscription-widget">
+                    <div class="widget-header">
+                        <h2>Subscription</h2><span class="more-icon"><i class="fas fa-ellipsis-v"></i></span>
+                    </div>
+                    <div class="days-left">0 Days left</div>
+                    <p>Plan: **Starter**</p>
+                    <p>Expiry: 13-07-2025</p>
+                    <button class="btn-upgrade">Upgrade <i class="fas fa-arrow-up"></i></button>
+                </div>
+            </div>
+
+            <div class="widgets-row">
+                
+                <div class="widget listings-summary-widget">
+                    <div class="widget-header">
+                        <h2>Listings</h2><span class="more-icon"><i class="fas fa-ellipsis-v"></i></span>
+                    </div>
+                    <div class="metric-number">10</div>
+                    <p>Total Listings: 10</p>
+                    <p>Visible Listings: 0</p>
+                    <p>Expired Listings: 2</p>
+
+                    <div class="button-stack">
+                        <button class="stack-btn">Performance</button>
+                        <button class="stack-btn">My Profile</button>
+                        <button class="stack-btn">Visit Website</button>
+                    </div>
+                </div>
+
+                <div class="widget listings-graph-widget">
+                    <div class="widget-header">
+                        <h2>Listings</h2><span class="more-icon"><i class="fas fa-ellipsis-v"></i></span>
+                    </div>
+                    <div class="legend">
+                        <span class="rent">Rent</span>
+                        <span class="sale">Sale</span>
+                        <span class="short-let">Short Let</span>
+                    </div>
+                    <div class="chart-container">
+                                                <canvas id="listingsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="enquiry-table-container">
+                <div class="table-header">
+                    <h2>Enquiry messages</h2>
+                    <span class="view-all">view all</span>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Number</th>
+                            <th>Property description</th>
+                            <th>View property</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>12/11/2025</td>
+                            <td>John Doe</td>
+                            <td>080XXXXX</td>
+                            <td>4 Bed Duplex</td>
+                            <td><a href="#">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="video-guide-panel">
+            <h3>How to videos</h3>
+            <ul class="video-list">
+                <li><a href="#"><i class="fas fa-video"></i> How to Subscribe to Plan on DonemmynaijaPro</a></li>
+                <li><a href="#"><i class="fas fa-video"></i> How to Post a Property on DonemmynaijaPro</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+
+    <div class="footerOnealign">
+    <div class="footerOne">
+         <div class="footerOneHeadline">personal</div>
+         <div class="footerOnesubheadline">savings account</div>
+         <div class="footerOnesubheadline">current accounts</div>
+         <div class="footerOnesubheadline">compare account</div>
+         <div class="footerOnesubheadline">cards</div>
+         <div class="footerOnesubheadline">non resisdent nigerian service</div>
+         <div class="footerOnesubheadline">loans</div>
+         <div class="footerOnesubheadline">ways to bank</div>
+         <div class="footerOnesubheadline">private banking</div>
+         <div class="footerOnesubheadline">opening accounts</div>
+
+
+    </div> <!--end of footerOne-->
+
+
+    <div class="footerOne">
+         <div class="footerOneHeadline">personal</div>
+         <div class="footerOnesubheadline">savings account</div>
+         <div class="footerOnesubheadline">current accounts</div>
+         <div class="footerOnesubheadline">compare account</div>
+         <div class="footerOnesubheadline">cards</div>
+         <div class="footerOnesubheadline">non resisdent nigerian service</div>
+         <div class="footerOnesubheadline">loans</div>
+         <div class="footerOnesubheadline">ways to bank</div>
+         <div class="footerOnesubheadline">private banking</div>
+         <div class="footerOnesubheadline">opening accounts</div>
+
+
+    </div> <!--end of footerOne-->
+
+
+    <div class="footerOne">
+         <div class="footerOneHeadline">personal</div>
+         <div class="footerOnesubheadline">savings account</div>
+         <div class="footerOnesubheadline">current accounts</div>
+         <div class="footerOnesubheadline">compare account</div>
+         <div class="footerOnesubheadline">cards</div>
+         <div class="footerOnesubheadline">non resisdent nigerian service</div>
+         <div class="footerOnesubheadline">loans</div>
+         <div class="footerOnesubheadline">ways to bank</div>
+         <div class="footerOnesubheadline">private banking</div>
+         <div class="footerOnesubheadline">opening accounts</div>
+
+
+    </div> <!--end of footerOne-->
+
+
+    <div class="footerOne">
+         <div class="footerOneHeadline">personal</div>
+         <div class="footerOnesubheadline">savings account</div>
+         <div class="footerOnesubheadline">current accounts</div>
+         <div class="footerOnesubheadline">compare account</div>
+         <div class="footerOnesubheadline">cards</div>
+         <div class="footerOnesubheadline">non resisdent nigerian service</div>
+         <div class="footerOnesubheadline">loans</div>
+         <div class="footerOnesubheadline">ways to bank</div>
+         <div class="footerOnesubheadline">private banking</div>
+         <div class="footerOnesubheadline">opening accounts</div>
+
+
+    </div> <!--end of footerOne-->
+
+
+    <div class="footerOne">
+         <div class="footerOneHeadline">personal</div>
+         <div class="footerOnesubheadline">savings account</div>
+         <div class="footerOnesubheadline">current accounts</div>
+         <div class="footerOnesubheadline">compare account</div>
+         <div class="footerOnesubheadline">cards</div>
+         <div class="footerOnesubheadline">non resisdent nigerian service</div>
+         <div class="footerOnesubheadline">loans</div>
+         <div class="footerOnesubheadline">ways to bank</div>
+         <div class="footerOnesubheadline">private banking</div>
+         <div class="footerOnesubheadline">opening accounts</div>
+
+
+    </div> <!--end of footerOne-->
+
+    <div class="footerOne">
+         <div class="footerOneHeadline">personal</div>
+         <div class="footerOnesubheadline">savings account</div>
+         <div class="footerOnesubheadline">current accounts</div>
+         <div class="footerOnesubheadline">compare account</div>
+         <div class="footerOnesubheadline">cards</div>
+         <div class="footerOnesubheadline">non resisdent nigerian service</div>
+         <div class="footerOnesubheadline">loans</div>
+         <div class="footerOnesubheadline">ways to bank</div>
+         <div class="footerOnesubheadline">private banking</div>
+         <div class="footerOnesubheadline">opening accounts</div>
+
+
+    </div> <!--end of footerOne-->
+
+</div><!--end of footerOnealign-->
+
+
+<div class="footerTwo">
+       
+    <div class="gtConnectLogo"></div>
+
+    <div class="number">+2348127982357  +2348127982357  +2348127982357  +2348127982357 
+        +2348127982357  +2348127982357  +2348127982357  +2348127982357
+        +2348127982357  +2348127982357  +2348127982357  +2348127982357
+    </div>
+ 
+
+</div> <!--end of footer two-->
+
+</footer>
+
+<div class="lastFooter">
+  Copyright &copy; designed by donemmynaija software development
+</div>
+
+
+
+
+<script src="apps.js"></script>
+
+
+</body> <!--end of body-->
+</html> <!--end of html-->
