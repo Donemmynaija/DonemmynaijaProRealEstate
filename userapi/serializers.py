@@ -11,37 +11,28 @@ class UserSerializer(serializers.Serializer):
 class ProfileSerializer(serializers.Serializer):
     class Meta:
         model = UserSerializer
-        fields = ['fullname', 'email', 'phone_number', 'role', 'profile_picture']
+        fields = ['fullname', 'email', 'phone_number', 'role', 'profile_picture', 'password', 'confirm_password' ]
 
-class RegistrationSerializer(serializers.Serializer):
-    username = serializers.CharField(write_only=True)
-    password = serializers.CharField(write_only=True)
-    confirm_password = serializers.CharField(write_only=True)
-    email = serializers.EmailField(write_only=True)
+class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ['fullname', 'email', 'phone_number', 'role', 'profile_picture', 'password', 'confirm_password']
+        fields = ['fullname', 'email', 'phone_number', 'role', 'password', 'confirm_password']
 
-def validate(self, data):
-    if data['password'] != data['confirm_password']:
-        raise serializers.ValidationError("Passwords do not match.")
-    if User.objects.filter(email=data['email']).exists():
-        raise serializers.ValidationError("Email is already in use.")
-    return data
-
-def create(self, validated_data):
-        email=validated_data.pop('email'),
-        password=validated_data.pop('password')
-        confirm_password=validated_data.pop('confirm_password')
-        user = User.objects.create_user(email=email, password=password)
-        profile= Profile.objects.create(
-                               user=user,
-                               full_name= validated_data('fullname'),
-                               phone_number= validated_data('phone_number'),
-                               role= validated_data('role'),
-                               profile_picture= validated_data('profile_picture')
-                    
-                               
-                               )
-        send_welcome_email(email, profile.fullname)
+    def create(self, validated_data):
+        profile = Profile.objects.create(
+            fullname=validated_data['fullname'],
+            email=validated_data['email'],
+            phone_number=validated_data.get('phone_number', ''),
+            password1=validated_data['password'],
+            password2=validated_data['confirm_password'],
+            role=validated_data['role'],
+            password=validated_data('password'),
+            confirm_password=validated_data('confirm_password')
+        )
+        send_welcome_email(profile.email, profile.fullname)
         return profile
+    
+    def validate(self, data):
+        if data['password'] != data['confirm_password']:
+            raise serializers.ValidationError("Passwords do not match.")
+        return data
