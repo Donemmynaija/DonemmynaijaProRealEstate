@@ -20,14 +20,14 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         profile = Profile.objects.create(
-            fullname=validated_data.pop('fullname'),
-            email=validated_data.pop('email'),
-            phone_number=validated_data.pop('phone_number', ''),
-            password1=validated_data.pop('password'),
-            password2=validated_data.pop('confirm_password'),
-            role=validated_data.pop('role')
-            password=validated_data.pop('password'),
-            confirm_password=validated_data.pop('confirm_password')
+            fullname=validated_data['fullname'],
+            email=validated_data['email'],
+            phone_number=validated_data.get('phone_number', ''),
+            password1=validated_data['password'],
+            password2=validated_data['confirm_password'],
+            role=validated_data['role'],
+            password=validated_data['password'],
+            confirm_password=validated_data['confirm_password']
         )
         send_welcome_email(profile.email, profile.fullname)
         return profile
